@@ -1,0 +1,110 @@
+.oven-entrance {
+  --piggy-duration: 4800ms;
+  --piggy-wall: 17.75%;
+  --piggy-size: min(62svh, 78vw, 620px);
+  --piggy-bottom: 8svh;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  isolation: isolate;
+  overflow: hidden;
+  background: #d5c3aa;
+  outline: none;
+}
+.oven-entrance[data-ready='true'] { animation: piggy-dismiss var(--piggy-duration) linear both; }
+.piggy-scene { position: absolute; inset: 0; overflow: hidden; pointer-events: none; visibility: hidden; }
+[data-ready='true'] .piggy-scene { visibility: visible; }
+.piggy-opening { position: absolute; inset: 0 var(--piggy-wall); overflow: hidden; background: #a85e61; }
+.piggy-red-space { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.piggy-character, .piggy-grip-stage {
+  position: absolute;
+  bottom: var(--piggy-bottom);
+  width: var(--piggy-size);
+  aspect-ratio: 1122 / 1402;
+}
+.piggy-character { left: 0; }
+.piggy-grip-stage { left: var(--piggy-wall); z-index: 4; }
+.piggy-rig { display: block; width: 100%; height: 100%; overflow: visible; }
+.piggy-body { transform: rotate(-18deg); transform-origin: 740px 1310px; }
+.piggy-hand { opacity: 0; transform: scaleX(.05); transform-origin: 0 935px; }
+.piggy-wall { position: absolute; top: 0; bottom: 0; width: var(--piggy-wall); z-index: 3; background: #d5c3aa; }
+.piggy-wall svg { display: block; width: 100%; height: 100%; }
+.piggy-wall-left { left: 0; }
+.piggy-wall-right { right: 0; }
+.piggy-wall-left::after {
+  content: ''; position: absolute; inset: 0 -14px 0 auto; width: 14px;
+  border-left: 1px solid rgb(245 229 204 / 65%);
+  background: linear-gradient(90deg, rgb(65 30 24 / 22%), transparent);
+}
+.piggy-wall-right::after {
+  content: ''; position: absolute; inset: 0 auto 0 -10px; width: 10px;
+  background: linear-gradient(270deg, rgb(65 30 24 / 14%), transparent);
+}
+.piggy-lettering {
+  position: absolute;
+  z-index: 2;
+  top: clamp(36px, 7svh, 72px);
+  left: 56%;
+  width: min(44vw, 56svh, 600px);
+  height: auto;
+  max-width: none;
+  transform: translate(-50%, -150%);
+  transform-origin: 50% 40%;
+  filter: drop-shadow(0 5px 0 rgb(101 48 44 / 10%));
+}
+/* Both the skip control and artwork fade together as the recipe page appears. */
+.entrance-skip {
+  position: absolute;
+  z-index: 10;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(18px, env(safe-area-inset-right));
+  min-height: 44px;
+  padding: 9px 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgb(78 44 37 / 24%);
+  border-radius: 999px;
+  background: #f6ebda;
+  color: #553d32;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+.entrance-skip:hover { background: #fff9ed; }
+.entrance-skip:focus-visible { outline: 3px solid #fff5d5; outline-offset: 4px; box-shadow: 0 0 0 7px #713e37; }
+[data-ready='true'] .piggy-lettering { animation: piggy-lettering var(--piggy-duration) both; }
+[data-ready='true'] .piggy-body { animation: piggy-peek var(--piggy-duration) both; }
+[data-ready='true'] .piggy-hand { animation: piggy-wall-grip var(--piggy-duration) both; }
+@keyframes piggy-lettering {
+  0% { transform: translate(-50%, -150%); }
+  18% { transform: translate(-50%, 6px); }
+  25%, 100% { transform: translate(-50%, 0); }
+}
+@keyframes piggy-wall-grip {
+  0%, 10% { opacity: 0; transform: scaleX(.05); }
+  11% { opacity: 1; transform: scaleX(.05); }
+  19% { opacity: 1; transform: scaleX(1.04); }
+  24%, 100% { opacity: 1; transform: scaleX(1); }
+}
+@keyframes piggy-peek {
+  0%, 19% { transform: rotate(-18deg); }
+  36% { transform: rotate(8deg); }
+  45% { transform: rotate(6.5deg); }
+  63% { transform: rotate(17deg); }
+  70%, 100% { transform: rotate(16deg); }
+}
+@keyframes piggy-dismiss { 0%, 88% { opacity: 1; } 100% { opacity: 0; } }
+@media (max-width: 600px) {
+  .oven-entrance { --piggy-wall: 16%; --piggy-bottom: 8svh; }
+  .piggy-lettering { top: max(90px, 13svh); left: 50%; width: 64vw; }
+  .entrance-skip { top: max(14px, env(safe-area-inset-top)); right: max(14px, env(safe-area-inset-right)); }
+}
+@media (max-height: 500px) and (min-width: 601px) {
+  .oven-entrance { --piggy-size: 72svh; --piggy-bottom: -6svh; }
+  .piggy-lettering { top: 20px; width: 48svh; left: 60%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .oven-entrance, .oven-entrance * { animation: none !important; }
+}
