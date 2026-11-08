@@ -1,10 +1,9 @@
 import { Wheat } from 'lucide-react'
 import type { Step } from '../model'
 
-export default function StepCard({ step, index, count, onOpen, onTips }: {
+export default function StepCard({ step, index, onOpen, onTips }: {
   step: Step
   index: number
-  count: number
   onOpen: () => void
   onTips: () => void
 }) {
@@ -13,7 +12,6 @@ export default function StepCard({ step, index, count, onOpen, onTips }: {
       aria-label={`${index + 1}단계 카드`}>
       <div className="step-card-top">
         <span className="step-number">{String(index + 1).padStart(2, '0')}</span>
-        <span className="step-eyebrow">{index + 1} / {count} 단계</span>
       </div>
       <button className="step-open" aria-label={`${index + 1}단계 열기`} onClick={onOpen}>
         <div className="step-preview-body">

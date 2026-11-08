@@ -167,7 +167,6 @@ export default function HomePage({
         <div className="library-toolbar">
           <button type="button" className="library-filter" role="switch" aria-label="즐겨찾기만 보기"
             aria-checked={favorites} onClick={() => { setFavorites(value => !value); setPage(0) }}>
-            <span className="filter-selection" aria-hidden="true" />
             <span className={`filter-label ${!favorites ? 'active' : ''}`}><BookOpen aria-hidden="true" size={16} />전체 레시피</span>
             <span className={`filter-label ${favorites ? 'active' : ''}`}><Heart aria-hidden="true" size={16} />즐겨찾기</span>
           </button>

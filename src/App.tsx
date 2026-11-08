@@ -223,7 +223,6 @@ export default function App() {
               <strong>
                 OVEN NOTE<span>.</span>
               </strong>
-              <small>나의 작은 베이킹 노트</small>
             </span>
           </button>
 
@@ -367,7 +366,6 @@ export default function App() {
                     key={step.id}
                     step={step}
                     index={index}
-                    count={recipe.steps.length}
                     onOpen={() => {
                       setFocusTips(false)
                       setFocusedStep(step.id)
@@ -384,7 +382,7 @@ export default function App() {
           </section>
           <footer className="editor-footer">
             <span>한 단계씩, 나만의 맛을 완성해요.</span>
-            <span>준비 {recipe.steps.length}단계</span>
+            <span>나의 작은 베이킹 노트</span>
           </footer>
           {panel && (
             <PanelDialog

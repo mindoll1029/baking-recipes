@@ -3179,3 +3179,9 @@ dialog::backdrop { background: #32192399; }
 .library-filter .filter-selection { inset: 2px auto 2px 2px; width: calc((100% - 4px) / 2); border-radius: 12px; }
 .library-filter .filter-label { font-size: 11px; line-height: 1.5; gap: 3px; padding: 3px 2px; }
 .library-filter .filter-label svg { width: 13px; height: 13px; }
+
+/* Each filter segment follows its label rather than a fixed half-width. */
+.library-filter { width: max-content; grid-template-columns: max-content max-content; }
+.library-filter .filter-label { white-space: nowrap; padding-inline: 12px; border-radius: 12px; transition: background-color 180ms ease, color 180ms ease; }
+.library-filter .filter-label.active { background: var(--wall-deep); }
+@media (prefers-reduced-motion: reduce) { .library-filter .filter-label { transition: none; } }
