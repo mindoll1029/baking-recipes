@@ -3172,10 +3172,10 @@ dialog::backdrop { background: #32192399; }
 
 /* Exact type sizes and a reserved space above the pantry. */
 .brand strong { font-size: 30px; }
-.recipe-heading h1 { font-size: 60px; }
+.recipe-heading h1 { font-size: 35pt; }
 .house-pantry { height: calc(100% - 112px); }
-.library-filter { width: 160px; min-height: 26px; padding: 2px; border-radius: 15px; }
-.library-filter::before { content: ''; position: absolute; inset: -9px 0; }
+.library-filter { width: 160px; min-height: 34px; padding: 2px; border-radius: 15px; }
+.library-filter::before { content: ''; position: absolute; inset: -5px 0; }
 .library-filter .filter-selection { inset: 2px auto 2px 2px; width: calc((100% - 4px) / 2); border-radius: 12px; }
-.library-filter .filter-label { font-size: 9px; line-height: 1.5; gap: 3px; padding: 3px 2px; }
-.library-filter .filter-label svg { width: 11px; height: 11px; }
+.library-filter .filter-label { font-size: 11px; line-height: 1.5; gap: 3px; padding: 3px 2px; }
+.library-filter .filter-label svg { width: 13px; height: 13px; }
